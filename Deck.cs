@@ -1,4 +1,21 @@
-﻿using System;
+﻿/*
+
+Class: Deck
+    Fields:
+    - cards: List<Card>
+    - empty: bool
+    Properties:
+    + Cards: List<Card>
+    + Empty: bool
+    Methods:
+    + Deck()
+    + TakeTopCard(): Card?
+    + Shuffle(): void
+    + Cut(): void
+
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +24,10 @@ using System.Threading.Tasks;
 
 public class Deck
 {
-    List<Card> cards = new List<Card>();
+    List<Card> cards = new();
+
+    List<Card> Cards { get { return cards; } }
+    bool Empty { get { return Cards.Count < 1; } }
 
     //Deck Constructor
     public Deck()
@@ -21,10 +41,8 @@ public class Deck
         }
     }
 
-    List<Card> Cards { get { return cards; } }
-
     //Takes top card from deck (if deck is not empty, otherwise return null)
-    public Card TakeTopCard()
+    public Card? TakeTopCard()
     {   
         if (cards.Count == 0) return null;
 
@@ -38,10 +56,13 @@ public class Deck
     public void Shuffle()
     {
         Random rand = new();
+
         for (int i = 0; i < cards.Count; i++) {
-            Card temp = cards[0];
-            cards[0] = cards[i];
-            cards[i] = temp;
+            int idx = rand.Next(i, cards.Count);
+
+            Card temp = cards[i];
+            cards[i] = cards[idx];
+            cards[idx] = temp;
         }
     }
 
