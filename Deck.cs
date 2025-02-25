@@ -16,30 +16,39 @@ public class Deck
         {
             foreach (Rank rank in Enum.GetValues(typeof(Rank)))
             {
-                //create a new card and add it to the deck
+                cards.Add(new Card(suit, rank));
             }
         }
     }
 
-    //Implement a property to get Cards
-    
+    List<Card> Cards { get { return cards; } }
 
     //Takes top card from deck (if deck is not empty, otherwise return null)
     public Card TakeTopCard()
-    {
-        //implementation
+    {   
+        if (cards.Count == 0) return null;
+
+        Card c = cards[0];
+        cards.RemoveAt(0);
+        c.FlipOver();
+        return c;
     }
 
     //Shuffle Method
     public void Shuffle()
     {
-        //implementation
+        Random rand = new();
+        for (int i = 0; i < cards.Count; i++) {
+            Card temp = cards[0];
+            cards[0] = cards[i];
+            cards[i] = temp;
+        }
     }
 
     //Cut method
     public void Cut(int index)
     {
-        //implementation
+        cards.RemoveRange(index, cards.Count - index);
     }
 }
 
