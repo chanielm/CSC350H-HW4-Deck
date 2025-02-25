@@ -1,6 +1,6 @@
 ﻿/*
 
-Enum: Suit
+Enumeration: Suit
 	ATTRIBUTE	VALUE
 	Spades		0
 	Clubs		1
