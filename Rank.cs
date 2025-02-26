@@ -1,6 +1,6 @@
 ﻿/*
 
-Enum: Rank
+Enumeration: Rank
 	ATTRIBUTE	VALUE
 	Ace 		0
 	Two 		1
